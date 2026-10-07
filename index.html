@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan – Arif &amp; Sari</title>
+  <meta name="description" content="Dengan penuh kebahagiaan, kami mengundang Anda untuk menjadi bagian dari hari istimewa pernikahan Arif & Sari." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- MUSIC PLAYER -->
+  <div id="music-btn" title="Putar Musik" onclick="toggleMusic()">
+    <svg id="music-icon-play" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+      <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3z"/>
+    </svg>
+    <svg id="music-icon-pause" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="display:none">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+  </div>
+  <audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- COVER / AMPLOP -->
+  <div id="cover-screen">
+    <canvas id="cover-canvas"></canvas>
+    <div class="cover-flower-top"></div>
+    <div class="cover-content">
+      <p class="cover-label">Undangan Pernikahan</p>
+      <h1 class="cover-names">Arif <span>&amp;</span> Sari</h1>
+      <p class="cover-date">Sabtu, 15 November 2026</p>
+      <div class="cover-divider"></div>
+      <p class="cover-guest-label">Kepada Yth.</p>
+      <p class="cover-guest-name" id="guest-name">Nama Tamu Undangan</p>
+      <button id="open-btn" onclick="openInvitation()">
+        <span>Buka Undangan</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </button>
+    </div>
+    <div class="cover-flower-bottom"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content" style="display:none">
+
+    <canvas id="petal-canvas"></canvas>
+
+    <!-- DOT NAV -->
+    <nav id="dot-nav">
+      <a href="#hero" class="dot active" data-label="Beranda"></a>
+      <a href="#couple" class="dot" data-label="Pasangan"></a>
+      <a href="#event" class="dot" data-label="Acara"></a>
+      <a href="#story" class="dot" data-label="Love Story"></a>
+      <a href="#gallery" class="dot" data-label="Galeri"></a>
+      <a href="#wishes" class="dot" data-label="Ucapan"></a>
+      <a href="#rsvp" class="dot" data-label="RSVP"></a>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-flower-tl"></div>
+      <div class="hero-flower-br"></div>
+      <div class="hero-content reveal">
+        <p class="tag-script">The Wedding of</p>
+        <h1 class="hero-names">Arif <span class="amp">&amp;</span> Sari</h1>
+        <div class="hero-ornament">✦ ✦ ✦</div>
+        <p class="hero-date-text">Sabtu &nbsp;|&nbsp; 15 November 2026</p>
+        <div class="scroll-hint">
+          <span class="scroll-line"></span>
+          <p>Scroll</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPENING QUOTE -->
+    <section id="quote-section" class="quote-section">
+      <div class="quote-inner reveal">
+        <div class="quote-ornament">✦</div>
+        <p class="quote-arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
+        <p class="quote-trans">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya."</p>
+        <p class="quote-source">— QS. Ar-Rum: 21</p>
+      </div>
+    </section>
+
+    <!-- COUPLE -->
+    <section id="couple">
+      <div class="section-header reveal">
+        <p class="section-tag">Pengantin</p>
+        <h2 class="section-title">Dua Insan yang Bersatu</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="couple-cards">
+        <div class="person-card reveal">
+          <div class="person-photo groom-photo"></div>
+          <div class="person-info">
+            <p class="person-role">Mempelai Pria</p>
+            <h3 class="person-name">Muhammad Arif Pratama, S.T.</h3>
+            <p class="person-parents">Putra pertama dari<br/><strong>Bapak Hendra</strong> &amp; <strong>Ibu Ratna</strong></p>
+          </div>
+        </div>
+        <div class="heart-center reveal">
+          <div class="heart-pulse">&#9829;</div>
+        </div>
+        <div class="person-card reveal">
+          <div class="person-photo bride-photo"></div>
+          <div class="person-info">
+            <p class="person-role">Mempelai Wanita</p>
+            <h3 class="person-name">Sari Dwi Cahyani, S.Pd.</h3>
+            <p class="person-parents">Putri pertama dari<br/><strong>Bapak Darmawan</strong> &amp; <strong>Ibu Lestari</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section id="countdown-section">
+      <div class="countdown-bg"></div>
+      <div class="countdown-inner reveal">
+        <p class="section-tag" style="color:#b3daf5">Menuju Hari Bahagia</p>
+        <h2 class="countdown-title">15 November 2026</h2>
+        <div class="countdown-grid" id="countdown-grid">
+          <div class="countdown-box"><span id="cd-days">00</span><label>Hari</label></div>
+          <div class="countdown-box"><span id="cd-hours">00</span><label>Jam</label></div>
+          <div class="countdown-box"><span id="cd-mins">00</span><label>Menit</label></div>
+          <div class="countdown-box"><span id="cd-secs">00</span><label>Detik</label></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT -->
+    <section id="event">
+      <div class="section-header reveal">
+        <p class="section-tag">Waktu &amp; Tempat</p>
+        <h2 class="section-title">Detail Acara</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="event-cards">
+        <div class="event-card reveal">
+          <div class="event-icon">&#128141;</div>
+          <h3 class="event-name">Akad Nikah</h3>
+          <div class="event-info-row"><span class="event-emoji">&#128197;</span><span>Sabtu, 15 November 2026</span></div>
+          <div class="event-info-row"><span class="event-emoji">&#9200;</span><span>08.00 – 10.00 WIB</span></div>
+          <div class="event-info-row"><span class="event-emoji">&#128205;</span><span>Masjid Al-Ikhlas, Jl. Melati No. 12, Jakarta Selatan</span></div>
+          <a href="https://maps.google.com" target="_blank" class="maps-btn">&#128205; Lihat di Maps</a>
+        </div>
+        <div class="event-card reveal">
+          <div class="event-icon">&#127818;</div>
+          <h3 class="event-name">Resepsi</h3>
+          <div class="event-info-row"><span class="event-emoji">&#128197;</span><span>Sabtu, 15 November 2026</span></div>
+          <div class="event-info-row"><span class="event-emoji">&#9200;</span><span>11.00 – 14.00 WIB</span></div>
+          <div class="event-info-row"><span class="event-emoji">&#128205;</span><span>Gedung Serbaguna Harmoni, Jl. Sudirman No. 45, Jakarta</span></div>
+          <a href="https://maps.google.com" target="_blank" class="maps-btn">&#128205; Lihat di Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOVE STORY -->
+    <section id="story">
+      <div class="section-header reveal">
+        <p class="section-tag">Perjalanan Cinta</p>
+        <h2 class="section-title">Our Love Story</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="tl-dot"><span>2019</span></div>
+          <div class="tl-card">
+            <h4>Pertemuan Pertama &#10025;</h4>
+            <p>Takdir mempertemukan kami di sebuah seminar di Universitas Indonesia. Pandangan pertama yang tak terlupakan.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="tl-dot"><span>2020</span></div>
+          <div class="tl-card">
+            <h4>Jatuh Hati &#128153;</h4>
+            <p>Selama pandemi, percakapan panjang setiap malam membuat kami semakin mengenal satu sama lain dan jatuh hati.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="tl-dot"><span>2022</span></div>
+          <div class="tl-card">
+            <h4>Lamaran &#128141;</h4>
+            <p>Di tepi pantai dengan senja keemasan, Arif melamar Sari dengan segenap cinta dan harapan untuk selamanya.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="tl-dot"><span>2026</span></div>
+          <div class="tl-card highlight">
+            <h4>Menuju Altar &#128144;&#129309;</h4>
+            <p>Setelah perjalanan indah bersama, kami siap melangkah ke jenjang yang lebih suci. Hari ini adalah awal dari seterusnya.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="section-header reveal">
+        <p class="section-tag">Kenangan Kami</p>
+        <h2 class="section-title">Galeri Foto</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item g-large reveal" onclick="openLightbox(this)"><div class="gimg gi1"></div></div>
+        <div class="gallery-item reveal" onclick="openLightbox(this)"><div class="gimg gi2"></div></div>
+        <div class="gallery-item reveal" onclick="openLightbox(this)"><div class="gimg gi3"></div></div>
+        <div class="gallery-item reveal" onclick="openLightbox(this)"><div class="gimg gi4"></div></div>
+        <div class="gallery-item reveal" onclick="openLightbox(this)"><div class="gimg gi5"></div></div>
+        <div class="gallery-item g-wide reveal" onclick="openLightbox(this)"><div class="gimg gi6"></div></div>
+      </div>
+    </section>
+
+    <!-- WISHES -->
+    <section id="wishes">
+      <div class="section-header reveal">
+        <p class="section-tag">Doa &amp; Ucapan</p>
+        <h2 class="section-title">Titip Doa untuk Kami</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="wishes-wrap">
+        <form id="wish-form" class="wish-form reveal" onsubmit="submitWish(event)">
+          <input id="wish-name" type="text" placeholder="Nama kamu..." required />
+          <textarea id="wish-text" placeholder="Tulis doa dan ucapan terbaikmu..." required rows="4"></textarea>
+          <button type="submit" class="btn-primary">Kirim Ucapan &#128140;</button>
+        </form>
+        <div id="wish-list" class="wish-list"></div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp">
+      <div class="rsvp-bg"></div>
+      <div class="rsvp-inner reveal">
+        <p class="section-tag" style="color:#b3daf5">Konfirmasi Kehadiran</p>
+        <h2 class="section-title" style="color:#fff">RSVP</h2>
+        <div class="section-line" style="background:rgba(255,255,255,0.3)"></div>
+        <form id="rsvp-form" onsubmit="submitRSVP(event)">
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input id="rsvp-name" type="text" placeholder="Nama kamu..." required />
+          </div>
+          <div class="form-group">
+            <label>Nomor HP / WhatsApp</label>
+            <input id="rsvp-phone" type="tel" placeholder="08xx-xxxx-xxxx" />
+          </div>
+          <div class="form-group">
+            <label>Konfirmasi Kehadiran</label>
+            <div class="attend-options">
+              <label class="attend-option">
+                <input type="radio" name="attend" value="hadir" required />
+                <span>&#10003; Hadir</span>
+              </label>
+              <label class="attend-option">
+                <input type="radio" name="attend" value="tidak" />
+                <span>&#10007; Tidak Hadir</span>
+              </label>
+              <label class="attend-option">
+                <input type="radio" name="attend" value="ragu" />
+                <span>? Masih Ragu</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Jumlah Tamu</label>
+            <select id="rsvp-guests">
+              <option value="1">1 orang</option>
+              <option value="2">2 orang</option>
+              <option value="3">3 orang</option>
+              <option value="4">4 orang</option>
+              <option value="5+">5+ orang</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary" id="rsvp-submit">Konfirmasi Sekarang &#128153;</button>
+        </form>
+        <div id="rsvp-success" style="display:none" class="rsvp-success">
+          <div class="success-icon">&#127881;</div>
+          <h3>Terima kasih!</h3>
+          <p>Konfirmasi kehadiran kamu telah kami terima.<br/>Kami sangat menantikan kehadiranmu!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="footer-flower"></div>
+      <div class="footer-content">
+        <p class="footer-script">Arif &amp; Sari</p>
+        <p class="footer-date">15 · 11 · 2026</p>
+        <p class="footer-msg">Merupakan suatu kehormatan dan kebahagiaan bagi kami<br/>apabila Bapak/Ibu/Saudara/i berkenan hadir<br/>dan memberikan doa restu. &#128591;</p>
+        <div class="footer-divider"></div>
+        <p class="footer-copy">Made with &#9829; · Undangan Digital</p>
+      </div>
+    </footer>
+
+  </div><!-- /main-content -->
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <div class="lb-inner">
+      <img id="lb-img" src="" alt="Gallery" />
+      <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
